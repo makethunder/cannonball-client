@@ -1,0 +1,23 @@
+{
+  "name": "cannonball-client",
+  "version": "0.0.1",
+  "authors": [
+    "kyle.tilman@paperg.com"
+  ],
+  "description": "Client to interact with the Statsd Proxy, Cannonball.",
+  "main": "metrics.js",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "statsd"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
