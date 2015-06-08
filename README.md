@@ -18,10 +18,6 @@ Module loaders.
 bower install https://github.com/paperg/cannonball-client#0.0.1
 ```
 
-#####Client Side
-
-The client side is written in pure JavaScript with no use of dependencies.
-
 #####Basic Usage and API
 
 In order to prevent the server from processing too much logic, we have moved
@@ -31,7 +27,7 @@ the processing and frees up our server to just send the request.
 Instantiate the library as follows:
 
 ```
-	var metrics = new Metrics()
+	var metrics = new Metrics('cannonball-server-address.paperg.com')
 
 	// endpoints
 	metrics.count('my.super.cool.value') // { my.super.cool.value: '-1|c' }
