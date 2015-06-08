@@ -15,7 +15,7 @@ This library can also be included using a `<script>` or with CommonJS and AMD
 Module loaders.
 
 ```
-bower install https://github.com/paperg/cannonball-client#0.0.1
+bower install git@github.com:paperg/cannonball-client
 ```
 
 #####Basic Usage and API
