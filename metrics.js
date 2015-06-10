@@ -1,5 +1,6 @@
 /* jshint asi:true */
 (function defineMetrics (global, factory) {
+  'strict mode';
   if (typeof exports === 'object' && exports) {
     factory(exports) // CommonJS
   } else if (typeof define === 'function' && define.amd) {
@@ -8,13 +9,10 @@
     Metrics = {} // Adds a global var to the window
     factory(Metrics) // script, wsh, asp
   }
-}(this, function metricsFactory (exports) {
-  return function Metrics (server) {
-    var output
-
-    function _send (metric) {
-      return output(metric)
-    }
+}(this, function metricsFactory (metrics) {
+  'strict mode';
+  function Metrics (server) {
+    var _send
 
     function _sendStdout (metric) {
       return console.log(metric)
@@ -32,41 +30,51 @@
 
     // Main Methods
     // ============
-    this.count = function (name, value) {
-      var metric = {};
+    function count(name, value) {
+      var metric = {}
       metric[name] = value+ '|c'
       return _send(metric)
     }
 
-    this.gauge = function (name, value) {
-      var metric = {};
+    function gauge(name, value) {
+      var metric = {}
       metric[name] = value+ '|g'
       return _send(metric)
     }
 
-    this.timer = function (name, value) {
-      var metric = {};
+    function timer(name, value) {
+      var metric = {}
       metric[name] = value+ '|ms'
       return _send(metric)
     }
 
     // Helper Methods
     // ==============
-    this.increment = function (name) {
+    function increment(name) {
       return count(name, +1)
     }
 
-    this.decrement = function (name) {
+    function decrement(name) {
       return count(name, -1)
     }
 
-    output = _sendXHR
+    _send = _sendXHR
 
     if (!server){
       console.log('Whoops need to pass in a server address')
       console.log('All requests will be written to stdout instead of an aggregator')
-      output = _sendStdout
+      _send = _sendStdout
+    }
+
+    return {
+      count: count,
+      gauge: gauge,
+      timer: timer,
+      increment: increment,
+      decrement: decrement
     }
   }
-  exports = Metrics;
+
+  metrics = Metrics
+  return metrics
 }))
