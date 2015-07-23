@@ -6,7 +6,7 @@
                                                         
 
 The cannonball client is a javascript library that is a simple wrapper for
-making HTTP requests to the Cannonball server.It is written in pure JavaScript
+making HTTP requests to the Cannonball server. It is written in pure JavaScript
 with no use of dependencies to keep it simple to use.
 
 This repository can be loaded as a bower dependency.
