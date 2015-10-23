@@ -27,16 +27,17 @@ the processing and frees up our server to just send the request.
 Instantiate the library as follows:
 
 ```
-	var metrics = new Metrics('cannonball-server-address.paperg.com')
+	var metrics = new Metrics('cannonball-server-address.paperg.com',
+	'global.namespace')
 
 	// endpoints
-	metrics.count('my.super.cool.value') // { my.super.cool.value: '-1|c' }
-	metrics.increment('my.super.cool.value') // { my.super.cool.value: '1|c' }
-	metrics.decrement('my.super.cool.value') // { my.super.cool.value: '-1|c' }
+	metrics.count('my.super.cool.value') // { global.namespace.my.super.cool.value: '-1|c' }
+	metrics.increment('my.super.cool.value') // { global.namespace.my.super.cool.value: '1|c' }
+	metrics.decrement('my.super.cool.value') // { global.namespace.my.super.cool.value: '-1|c' }
 
-	metrics.gauge('my.super.cool.gauge') // { my.super.cool.gauge: '200|c' }
-	metrics.gauge('my.super.cool.gauge') // { my.super.cool.gauge: '-2|c' }
+	metrics.gauge('my.super.cool.gauge') // { global.namespace.my.super.cool.gauge: '200|c' }
+	metrics.gauge('my.super.cool.gauge') // { global.namespace.my.super.cool.gauge: '-2|c' }
 
-	metrics.timer('my.super.cool.timer') // { my.super.cool.timer: '382|ms' }
+	metrics.timer('my.super.cool.timer') // { global.namespace.my.super.cool.timer: '382|ms' }
 ```
 
