@@ -23,7 +23,13 @@
       xhr.open('POST', server);
       xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
 
-      xhr.send(JSON.stringify(metric));
+      try {
+        xhr.send(JSON.stringify(metric));
+      } catch (e) {
+        // something didn't work - send it to sentry
+        Raven.captureException(e);
+      }
+      // Don't stop execution due to a failure
       return true;
     }
 
